@@ -1,0 +1,8 @@
+package Dao;
+
+import entity.Category;
+
+public interface CategoryDao {
+
+	String addCategory(Category category);
+}

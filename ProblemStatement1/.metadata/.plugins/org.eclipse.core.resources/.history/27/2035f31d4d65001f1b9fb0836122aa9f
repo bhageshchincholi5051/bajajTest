@@ -1,0 +1,8 @@
+package Dao;
+
+import entity.Product;
+
+public interface ProductDao {
+
+	String addProductByCategory(Product product,Long categoryId);
+}

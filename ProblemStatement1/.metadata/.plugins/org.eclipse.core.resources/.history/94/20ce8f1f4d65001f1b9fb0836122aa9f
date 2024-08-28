@@ -1,0 +1,18 @@
+package testers;
+
+
+
+import org.hibernate.SessionFactory;
+
+import utils.HibernateUtils;
+
+public class TestHibernate {
+	
+	public static void main(String[] args) {
+		
+		SessionFactory sf = HibernateUtils.getSessionFactory();
+		
+		System.out.println("Hibernate is running !!");
+	}
+
+}

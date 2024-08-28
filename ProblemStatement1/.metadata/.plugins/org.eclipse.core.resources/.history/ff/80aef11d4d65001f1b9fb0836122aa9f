@@ -1,0 +1,41 @@
+package Dao;
+
+
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entity.Category;
+import utils.HibernateUtils;
+
+public class CategoryDaoImpl implements CategoryDao {
+
+	@Override
+	public String addCategory(Category category) {
+		
+		String message = "Category not added !!";
+		
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		
+		Transaction tr = session.beginTransaction();
+		try
+		{
+		
+			session.save(category);
+			
+			message = "Category added succesffully !!";
+			
+			tr.commit();
+			
+		}catch (RuntimeException e) {
+			if(tr != null)
+				tr.rollback();
+			
+			throw e;
+		}
+		
+		return message;
+	}
+	
+	
+}

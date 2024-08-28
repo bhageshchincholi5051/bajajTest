@@ -1,0 +1,8 @@
+package web_maven_hibernate;
+
+public class DestinationHashGenerator {
+
+	public static void main(String[] args) {
+		
+	}
+}

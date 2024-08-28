@@ -1,0 +1,44 @@
+package Dao;
+
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entity.Category;
+import entity.Product;
+import utils.HibernateUtils;
+
+public class ProductDaoImpl implements ProductDao{
+
+	@Override
+	public String addProductByCategory(Product product,Long categoryId) {
+		String message = "Product not added succesfuully !!";
+		
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		
+		Transaction tr = session.beginTransaction();
+		
+		try
+		{
+			
+			Category category = session.get(Category.class, categoryId);
+			
+			if(category != null)
+			{
+				category.addProduct(product);
+				
+//				session.save(tr)
+				
+				message = "Product Added Successfully !!";
+			}
+			
+		}catch (RuntimeException e) {
+			if(tr != null)
+				tr.rollback();
+			
+			throw e;
+		}
+		return message;
+	}
+
+}

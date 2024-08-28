@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Product Page</title>
+</head>
+<jsp:useBean id="pb" class="Bean.AddProduct" scope="session"/>
+<jsp:setProperty property="*" name="pb"/>
+<body>
+		<h1>${pb.name }</h1>
+		<h5>${pb.addNewProduct()}</h5>
+</body>
+</html>

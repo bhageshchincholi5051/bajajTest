@@ -1,0 +1,36 @@
+package testers;
+
+import java.util.Scanner;
+
+import org.hibernate.SessionFactory;
+
+import Dao.CategoryDao;
+import Dao.CategoryDaoImpl;
+import entity.Category;
+import utils.HibernateUtils;
+
+public class CategoyAdded {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		SessionFactory sf = HibernateUtils.getSessionFactory();
+		
+		try
+		{
+		
+			CategoryDao dao = new CategoryDaoImpl();
+			System.out.println("Enter category name and description :");
+			
+			Category cat = new Category(sc.next(),sc.next());
+			
+			String message = dao.addCategory(cat);
+			
+			System.out.println(message);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

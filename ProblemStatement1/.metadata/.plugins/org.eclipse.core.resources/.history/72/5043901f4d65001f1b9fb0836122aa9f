@@ -1,0 +1,35 @@
+package testers;
+
+import java.util.Scanner;
+
+import org.hibernate.SessionFactory;
+
+import Dao.ProductDao;
+import Dao.ProductDaoImpl;
+import entity.Product;
+import utils.HibernateUtils;
+
+public class ProductAdded {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		SessionFactory sf = HibernateUtils.getSessionFactory();
+		
+		try
+		{
+			
+			
+			ProductDao dao = new ProductDaoImpl();
+			System.out.println("Enter the product details  and category id : ");
+			Product product = new Product(sc.next(),sc.nextDouble(),sc.nextInt());
+			String message = dao.addProductByCategory(product, sc.nextLong());
+			System.out.println(message);
+		}catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+	}
+
+}
